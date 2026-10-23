@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --store-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --store-control-radius: 0.375rem;
 }
 
 @theme inline {
@@ -22,5 +24,90 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--store-font);
+  letter-spacing: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.store-control {
+  border-radius: var(--store-control-radius);
+  font-weight: 600;
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.product-slider-group {
+  display: flex;
+  width: 100%;
+  min-width: 100%;
+  gap: 0 !important;
+}
+
+.product-slider-card {
+  flex: 0 0 100% !important;
+  min-width: 0;
+  padding-left: 1rem !important;
+}
+
+@media (min-width: 40rem) {
+  .product-slider-card {
+    flex-basis: 50% !important;
+  }
+}
+
+@media (min-width: 64rem) {
+  .product-slider-card {
+    flex-basis: 25% !important;
+  }
+}
+
+@keyframes home-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.home-marquee {
+  animation: home-marquee-scroll 28s linear infinite;
+}
+
+@keyframes home-text-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.home-text-marquee {
+  animation: home-text-marquee-scroll 24s linear infinite;
+  animation-play-state: running;
+  will-change: transform;
+}
+
+.home-text-marquee-reverse {
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-marquee {
+    animation-play-state: paused;
+  }
 }
