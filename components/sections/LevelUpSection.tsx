@@ -28,6 +28,7 @@ export default function LevelUpSection() {
   const ref = useRef<HTMLElement>(null);
   const [inView, setInView] = useState(false);
   const [i, setI] = useState(0);
+  const [hiding, setHiding] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -47,15 +48,15 @@ export default function LevelUpSection() {
 
   useEffect(() => {
     if (!inView) return;
-    const id = setInterval(() => setI((n) => (n + 1) % PEOPLE.length), SWAP_MS);
+    const id = setInterval(() => setHiding(true), SWAP_MS);
     return () => clearInterval(id);
   }, [inView]);
 
   const box = "absolute left-1/2 top-1/2 h-(--ch) w-(--cw) -translate-x-1/2 -translate-y-1/2";
 
   return (
-    <section ref={ref} className={`bg-white px-4 py-10 sm:px-6 ${inView ? "lv-in" : ""}`}>
-      <div className="relative mx-auto h-[620px] max-w-360 overflow-hidden [--ch:80%] [--cw:80%] sm:h-[800px] sm:[--cw:50%] lg:[--cw:36%]">
+    <section ref={ref} className={`bg-white py-6 ${inView ? "lv-in" : ""}`}>
+      <div className="relative h-[480px] overflow-hidden [--ch:84%] [--cw:94%] sm:h-[800px] sm:[--ch:80%] sm:[--cw:50%] lg:[--cw:min(36%,520px)]">
         <Marquees className="text-[#d3d6d8]" />
 
         {/* Card background, then the white copy of the text clipped to the card, then the person on top */}
@@ -65,15 +66,19 @@ export default function LevelUpSection() {
         <div className={`${box} overflow-hidden rounded-3xl text-[10px] uppercase leading-3 text-white/80`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            key={i}
             src={PEOPLE[i]}
             alt=""
-            className="lv-zoom absolute inset-x-0 bottom-[4%] mx-auto h-[86%] w-full object-contain object-bottom"
+            onAnimationEnd={() => {
+              if (!hiding) return;
+              setI((n) => (n + 1) % PEOPLE.length);
+              setHiding(false);
+            }}
+            className={`${hiding ? "lv-hide" : "lv-show"} absolute inset-x-0 bottom-[4%] mx-auto h-[86%] w-full object-contain object-bottom`}
           />
-          <p className="absolute left-[6%] top-[22%]">Base &amp; Balance<br />Level up</p>
-          <p className="absolute right-[6%] top-[22%] text-right">Free<br />Delivery</p>
-          <p className="absolute bottom-[6%] left-[6%]">Fall / Winter<br />2026</p>
-          <p className="absolute bottom-[6%] right-[6%] text-right">Gym<br />Essentials</p>
+          <p className="absolute left-[6%] top-[27%]">Base &amp; Balance<br />Level up</p>
+          <p className="absolute right-[6%] top-[27%] text-right">Free<br />Delivery</p>
+          <p className="absolute bottom-[22%] left-[6%]">Fall / Winter<br />2026</p>
+          <p className="absolute bottom-[22%] right-[6%] text-right">Gym<br />Essentials</p>
         </div>
       </div>
     </section>

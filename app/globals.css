@@ -258,17 +258,53 @@ body::after {
   to { translate: -50% 0; }
 }
 
-@keyframes lv-zoom {
-  from { scale: 1.5; opacity: 0; }
-  to { scale: 1; opacity: 1; }
+@keyframes lv-wipe-out {
+  from { clip-path: inset(0); }
+  to { clip-path: inset(0 0 100% 0); }
+}
+
+@keyframes lv-wipe-in {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0); }
 }
 
 .lv-marq-r { animation: lv-marq-r 30s linear infinite; }
 .lv-marq-l { animation: lv-marq-l 30s linear infinite; }
 
-.lv-zoom { opacity: 0; transform-origin: bottom center; }
-.lv-in .lv-zoom { animation: lv-zoom 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+/* Person wipes out bottom to top, then the next one wipes in bottom to top */
+.lv-show { clip-path: inset(100% 0 0 0); }
+.lv-hide { clip-path: inset(0 0 100% 0); }
+.lv-in .lv-show { animation: lv-wipe-in 0.9s cubic-bezier(0.6, 0, 0.2, 1) both; }
+.lv-in .lv-hide { animation: lv-wipe-out 0.9s cubic-bezier(0.6, 0, 0.2, 1) both; }
 
 @media (prefers-reduced-motion: reduce) {
-  .lv-marq-r, .lv-marq-l, .lv-in .lv-zoom { animation: none; opacity: 1; }
+  .lv-marq-r, .lv-marq-l, .lv-in .lv-show, .lv-in .lv-hide { animation: none; }
+  .lv-show, .lv-hide { clip-path: none; }
+}
+
+/* ---- Latest Wear section: ghost text slides in from the sides, group photo zooms out (.lt-in added by LatestWearSection) ---- */
+@keyframes lt-from-left {
+  from { translate: -60% 0; opacity: 0; }
+  to { translate: 0 0; opacity: 1; }
+}
+
+@keyframes lt-from-right {
+  from { translate: 60% 0; opacity: 0; }
+  to { translate: 0 0; opacity: 1; }
+}
+
+@keyframes lt-zoom {
+  from { scale: 1.7; opacity: 0; }
+  to { scale: 1; opacity: 1; }
+}
+
+.lt-left, .lt-right, .lt-zoom { opacity: 0; }
+.lt-zoom { transform-origin: bottom center; }
+
+.lt-in .lt-left { animation: lt-from-left 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both; }
+.lt-in .lt-right { animation: lt-from-right 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both; }
+.lt-in .lt-zoom { animation: lt-zoom 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lt-in .lt-left, .lt-in .lt-right, .lt-in .lt-zoom { animation: none; opacity: 1; }
 }

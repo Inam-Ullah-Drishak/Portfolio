@@ -21,7 +21,7 @@ export default function HomeHeroSection() {
         ))}
       </svg>
 
-      <div className="relative mx-auto flex min-h-[max(720px,calc(100vh-90px))] max-w-360 flex-col items-center px-4 pt-28 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex min-h-[max(640px,calc(100svh-90px))] sm:min-h-[max(720px,calc(100vh-90px))] max-w-360 flex-col items-center px-4 pt-28 sm:px-6 lg:px-8">
         <h1 className="text-center text-[clamp(2.5rem,7vw,6.5rem)] font-medium uppercase leading-[0.92] tracking-tight">
           <span className="hx-word"><span style={{ "--i": 0 } as React.CSSProperties}>Start</span></span>{" "}
           <span className="hx-word"><span style={{ "--i": 1 } as React.CSSProperties}>your</span></span>{" "}
@@ -50,11 +50,11 @@ export default function HomeHeroSection() {
         <img
           src={HERO_MODEL}
           alt=""
-          className="hx-model pointer-events-none absolute bottom-0 left-1/2 -z-0 h-[50%] w-auto max-w-[90%] -translate-x-1/2 object-contain object-bottom"
+          className="hx-model pointer-events-none absolute bottom-0 left-1/2 -z-0 h-[56%] w-auto max-w-none sm:h-[50%] sm:max-w-[90%] -translate-x-1/2 object-contain object-bottom"
         />
 
         {/* Bottom-left: avatars + blurb */}
-        <div className="hx-fade absolute bottom-10 left-4 hidden max-w-60 md:block sm:left-6 lg:left-8" style={{ "--d": "2.1s" } as React.CSSProperties}>
+        <div className="hx-fade absolute bottom-10 left-4 hidden max-w-60 lg:block sm:left-6 lg:left-8" style={{ "--d": "2.1s" } as React.CSSProperties}>
           <div className="flex -space-x-3">
             {avatars.map((src) => (
               <span key={src} className="h-8 w-8 rounded-full border-2 border-[#e3e9eb] bg-cover bg-center" style={{ backgroundImage: `url(${src})` }} />
@@ -69,7 +69,7 @@ export default function HomeHeroSection() {
         <Link
           href="/shop"
           aria-label="Shop the lookbook"
-          className="hx-fade absolute bottom-10 right-4 hidden h-36 w-56 overflow-hidden rounded-2xl bg-[#0b0808] md:block sm:right-6 lg:right-8"
+          className="hx-fade absolute bottom-10 right-4 hidden h-36 w-56 overflow-hidden rounded-2xl bg-[#0b0808] lg:block sm:right-6 lg:right-8"
           style={{ "--d": "2.2s" } as React.CSSProperties}
         >
           <video

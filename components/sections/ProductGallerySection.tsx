@@ -37,12 +37,12 @@ export default function ProductGallerySection() {
   }, []);
 
   return (
-    <section ref={ref} className={`bg-white px-4 py-16 sm:px-6 sm:py-24 ${inView ? "wk-in" : ""}`}>
+    <section ref={ref} className={`bg-white px-4 py-10 sm:px-6 sm:py-24 ${inView ? "wk-in" : ""}`}>
       <div className="mx-auto max-w-360">
         {/* Header */}
-        <div className="wk-item relative mb-12 flex items-start justify-between text-[11px] uppercase tracking-wide text-[#0b0808]/70 sm:mb-16">
+        <div className="wk-item relative mb-8 flex flex-wrap items-start justify-between sm:mb-16 text-[11px] uppercase tracking-wide text-[#0b0808]/70 sm:mb-16">
           <span>New arrival</span>
-          <h2 className="absolute left-1/2 top-0 w-[70%] -translate-x-1/2 text-center text-[clamp(1.5rem,3.4vw,2.75rem)] font-medium normal-case leading-[0.95] tracking-tight text-[#0b0808] sm:w-auto">
+          <h2 className="order-last mt-6 w-full text-center sm:absolute sm:left-1/2 sm:top-0 sm:order-none sm:mt-0 sm:w-auto sm:-translate-x-1/2 text-[clamp(1.5rem,3.4vw,2.75rem)] font-medium normal-case leading-[0.95] tracking-tight text-[#0b0808] sm:w-auto">
             Fresh fits for your
             <br />
             next workout!
@@ -51,12 +51,12 @@ export default function ProductGallerySection() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 gap-3 pt-16 sm:pt-20 lg:grid-cols-4 lg:gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3 sm:pt-20 lg:grid-cols-4 lg:gap-4">
           {ITEMS.map((p, i) => (
             <Link
               key={i}
               href={p.href}
-              className={`wk-item relative block aspect-[0.72] overflow-hidden rounded-2xl ${p.cutout ? "bg-linear-to-b from-[#2f2b29] to-[#b4b4b4]" : "bg-[#d1d6d8]"}`}
+              className={`wk-item relative block aspect-[0.85] overflow-hidden sm:aspect-[0.72] rounded-2xl ${p.cutout ? "bg-linear-to-b from-[#2f2b29] to-[#b4b4b4]" : "bg-[#d1d6d8]"}`}
               style={delay(0.15 + (i % 4) * 0.1 + Math.floor(i / 4) * 0.2)}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -73,7 +73,7 @@ export default function ProductGallerySection() {
                   </svg>
                 </span>
               </span>
-              <span className="absolute inset-x-3 bottom-3 flex items-center justify-between rounded-xl bg-white/85 px-4 py-3 text-[#0b0808] backdrop-blur">
+              <span className="absolute inset-x-2 bottom-2 flex items-center justify-between rounded-xl bg-white/85 px-3 py-2 sm:inset-x-3 sm:bottom-3 sm:px-4 sm:py-3 text-[#0b0808] backdrop-blur">
                 <span className="flex flex-col text-[11px] leading-4">
                   <span className="font-medium">{p.name}</span>
                   <span className="text-[#0b0808]/70">{p.price}</span>
@@ -89,7 +89,7 @@ export default function ProductGallerySection() {
         </div>
 
         {/* See all */}
-        <div className="wk-item mt-16 flex justify-center sm:mt-24" style={delay(0.6)}>
+        <div className="wk-item mt-10 flex justify-center sm:mt-24" style={delay(0.6)}>
           <Link href="/shop" className="flex items-center gap-1 text-[13px] uppercase text-white">
             <span className="rounded-full bg-[#0b0808] px-5 py-3">See all brands</span>
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0b0808]" aria-hidden="true">

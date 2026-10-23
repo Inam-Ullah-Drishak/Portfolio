@@ -1,14 +1,9 @@
-import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import HomeHeroSection from "@/components/sections/HomeHeroSection";
-import HomePressMarquee from "@/components/sections/HomePressMarquee";
-import HomeTextMarquee from "@/components/sections/HomeTextMarquee";
-import ImgText from "@/components/sections/ImgText";
-import ProductSlider from "@/components/sections/ProductSlider";
 import WorkoutSection from "@/components/sections/WorkoutSection";
 import TopPicksSection from "@/components/sections/TopPicksSection";
-import LevelUpSection from "@/components/sections/LevelUpSection";
+import LatestWearSection from "@/components/sections/LatestWearSection";
 import ProductGallerySection from "@/components/sections/ProductGallerySection";
-import VideosFeeds from "@/components/sections/VideosFeeds";
+import LevelUpSection from "@/components/sections/LevelUpSection";
 
 export default function Home() {
   return (
@@ -16,16 +11,9 @@ export default function Home() {
       <HomeHeroSection />
       <WorkoutSection />
       <TopPicksSection />
+      <LatestWearSection />
       <ProductGallerySection />
       <LevelUpSection />
-      <HomePressMarquee />
-
-      {/* Featured Products Section */}
-      <FeaturedProducts limit={4} />
-      <HomeTextMarquee />
-      <VideosFeeds />
-      <ProductSlider />
-      <ImgText />
     </main>
   );
 }

@@ -53,14 +53,14 @@ export default function Navbar() {
         <Link
           href="/"
           aria-label="Base & Balance home"
-          className="absolute -top-3 left-1/2 z-10 flex h-14 w-[340px] -translate-x-1/2 items-end justify-center pb-1.5"
+          className="absolute -top-3 left-1/2 z-10 flex h-14 w-[120px] -translate-x-1/2 sm:w-[340px] items-end justify-center pb-1.5"
         >
           <svg viewBox="0 0 340 56" preserveAspectRatio="none" aria-hidden="true" className="absolute inset-0 h-full w-full fill-white">
             <path d="M0 0H340C316 0 312 12 304 24L292 44Q286 56 272 56H68Q54 56 48 44L36 24C28 12 24 0 0 0Z" />
           </svg>
           <span className="relative flex items-end gap-2">
             <Image src="/logo.png" alt="" width={32} height={32} className="h-8 w-auto" priority />
-            <span className="whitespace-nowrap text-base font-semibold uppercase tracking-wide text-[#0b0808]">Base &amp; Balance</span>
+            <span className="hidden whitespace-nowrap text-base sm:inline font-semibold uppercase tracking-wide text-[#0b0808]">Base &amp; Balance</span>
           </span>
         </Link>
 
@@ -72,11 +72,11 @@ export default function Navbar() {
               type="button"
               aria-label="Toggle menu"
               onClick={() => setIsMobileOpen((o) => !o)}
-              className="md:hidden"
+              className="xl:hidden"
             >
               {isMobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
-            <div className="hidden items-center gap-7 md:flex">
+            <div className="hidden items-center gap-7 xl:flex">
               {leftLinks.map((l) => (
                 <Link key={l.label} href={l.href} className={linkCls}>
                   {l.label}
@@ -87,7 +87,7 @@ export default function Navbar() {
 
           {/* Right */}
           <div className="flex items-center gap-2">
-            <div className="mr-5 hidden items-center gap-7 md:flex">
+            <div className="mr-5 hidden items-center gap-7 xl:flex">
               {rightLinks.map((l) => (
                 <Link key={l.label} href={l.href} className={linkCls}>
                   {l.label}
@@ -169,8 +169,8 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {isMobileOpen && (
-          <div className="mt-2 flex flex-col rounded-[22px] bg-[#d3dcdf] px-3 py-2 md:hidden">
-            {leftLinks.map((l) => (
+          <div className="mt-2 flex flex-col rounded-[22px] bg-[#d3dcdf] px-3 py-2 xl:hidden">
+            {[...leftLinks, ...rightLinks].map((l) => (
               <Link
                 key={l.label}
                 href={l.href}

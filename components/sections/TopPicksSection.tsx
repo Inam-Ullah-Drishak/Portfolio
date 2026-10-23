@@ -66,7 +66,7 @@ export default function TopPicksSection() {
   }, []);
 
   return (
-    <section ref={ref} className={`bg-white px-4 py-20 sm:px-6 sm:py-28 ${inView ? "wk-in" : ""}`}>
+    <section ref={ref} className={`bg-white px-4 py-12 sm:px-6 sm:py-28 ${inView ? "wk-in" : ""}`}>
       <div className="mx-auto max-w-360">
         {/* Heading row */}
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -86,12 +86,12 @@ export default function TopPicksSection() {
         </div>
 
         {/* Cards */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:px-0 md:mt-12 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible [&::-webkit-scrollbar]:hidden">
           {PICKS.map((p, i) => (
             <Link
               key={p.tag}
               href={p.href}
-              className="relative block aspect-[4/5] overflow-hidden rounded-3xl bg-linear-to-b from-[#2a2624] via-[#7a7775] to-[#eceded]"
+              className="relative block aspect-[4/5] w-[76%] shrink-0 snap-center overflow-hidden md:w-auto md:shrink rounded-3xl bg-linear-to-b from-[#2a2624] via-[#7a7775] to-[#eceded]"
             >
               {/* Only the cut-out animates (strips close up); the gradient stays put */}
               {/* eslint-disable-next-line @next/next/no-img-element */}

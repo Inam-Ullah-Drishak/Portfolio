@@ -7,9 +7,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto px-3 pb-3 pt-10 sm:px-5">
-      <div className="mx-auto max-w-360 overflow-hidden rounded-3xl bg-[#0b0808] px-6 pt-12 text-white sm:px-10">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.4fr]">
+    <footer className="mt-auto bg-[#0b0808] px-3 pb-3 pt-6 sm:px-5 sm:pt-10">
+      <div className="mx-auto max-w-360 overflow-hidden rounded-3xl bg-[#0b0808] [container-type:inline-size] px-6 pt-8 text-white sm:pt-12 sm:px-10">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.4fr)]">
           {/* Brand */}
           <div>
             <h3 className="text-xl font-semibold">Base &amp; Balance</h3>
@@ -70,14 +70,14 @@ export default function Footer() {
         {/* Outline wordmark */}
         <p
           aria-hidden="true"
-          className="vx-outline mt-12 select-none whitespace-nowrap text-center text-[11vw] font-bold uppercase leading-none tracking-tight"
+          className="vx-outline mt-8 select-none whitespace-nowrap pb-3 text-center text-[11cqw] font-bold uppercase leading-none tracking-tight"
         >
           Base &amp; Balance
         </p>
 
         <div className="border-t border-white/10 py-5 text-center">
           <p className="text-xs text-white/50">
-            © {currentYear} Base &amp; Balance. All rights reserved.
+            © {currentYear}{" "}Base &amp; Balance. All rights reserved.
           </p>
         </div>
       </div>
