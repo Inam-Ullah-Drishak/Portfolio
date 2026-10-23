@@ -53,7 +53,7 @@ export default function FeaturedProducts({ limit }: FeaturedProductsProps) {
           </h2>
           <Link
             href="/shop"
-            className="store-control inline-flex items-center bg-black px-6 py-3 text-sm text-white"
+            className="store-control inline-flex items-center bg-black px-6 py-3 text-[13px] text-white"
           >
             All Products
           </Link>
