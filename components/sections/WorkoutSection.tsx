@@ -1,11 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
-// Swap these for the final photos (paths under /public)
-const IMAGES = {
-  center: "/hero-model.png",
-  left: "/workout-left.jpg",
-  right: "/workout-right.jpg",
+// Replace image/href with real products when they are added (images are paths under /public)
+const PRODUCTS = {
+  center: { image: "/workout-center.png", href: "/shop" },
+  left: { image: "/workout-left.jpg", href: "/shop" },
+  right: { image: "/workout-right.jpg", href: "/shop" },
 };
 
 const delay = (s: number) => ({ "--d": `${s}s` }) as React.CSSProperties;
@@ -31,8 +32,8 @@ export default function WorkoutSection() {
   }, []);
 
   return (
-    <section ref={ref} className={`bg-white px-4 py-8 sm:px-6 ${inView ? "wk-in" : ""}`}>
-      <div className="relative mx-auto h-[560px] max-w-360 overflow-hidden sm:h-[640px]">
+    <section ref={ref} className={`bg-white px-4 py-20 sm:px-6 sm:py-28 ${inView ? "wk-in" : ""}`}>
+      <div className="relative mx-auto h-[640px] max-w-360 overflow-hidden sm:h-[760px]">
         {/* Giant word behind the cards */}
         <p
           aria-hidden="true"
@@ -43,21 +44,26 @@ export default function WorkoutSection() {
         </p>
 
         {/* Left card */}
-        <div
+        <Link
+          href={PRODUCTS.left.href}
           className="wk-item absolute left-[8%] top-[14%] h-[34%] w-[26%] rounded-2xl bg-cover bg-center sm:left-[11%] sm:w-[14.5%]"
-          style={{ ...delay(1.2), backgroundImage: `url(${IMAGES.left})` }}
+          style={{ ...delay(1.2), backgroundImage: `url(${PRODUCTS.left.image})` }}
         />
 
         {/* Centre card: sliced, then closes up */}
-        <div className="wk-strips absolute left-1/2 top-[12%] h-[62%] w-[44%] -translate-x-1/2 overflow-hidden rounded-3xl bg-linear-to-b from-[#2f2b29] to-[#b4b4b4] sm:w-[25%]">
+        <Link
+          href={PRODUCTS.center.href}
+          className="wk-strips absolute left-1/2 top-[12%] h-[62%] w-[44%] -translate-x-1/2 overflow-hidden rounded-3xl bg-linear-to-b from-[#2f2b29] to-[#b4b4b4] sm:w-[25%]"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMAGES.center} alt="" className="h-full w-full object-cover object-center" />
-        </div>
+          <img src={PRODUCTS.center.image} alt="" className="h-full w-full object-cover object-bottom" />
+        </Link>
 
         {/* Right card */}
-        <div
+        <Link
+          href={PRODUCTS.right.href}
           className="wk-item absolute right-[8%] top-[46%] h-[34%] w-[26%] rounded-2xl bg-cover bg-center sm:right-auto sm:left-[74%] sm:w-[14.5%]"
-          style={{ ...delay(1.4), backgroundImage: `url(${IMAGES.right})` }}
+          style={{ ...delay(1.4), backgroundImage: `url(${PRODUCTS.right.image})` }}
         />
 
         {/* Blurbs */}

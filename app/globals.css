@@ -219,10 +219,29 @@ body::after {
 
 .wk-in .wk-strips {
   opacity: 1;
-  animation: hx-strips 1.2s ease-out 0.3s both;
+  animation: hx-strips 1.2s ease-out var(--sd, 0.3s) both;
+}
+
+/* Words slide up once the section is in view (.wk-in) */
+.tp-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.06em;
+}
+
+.tp-word > span {
+  display: inline-block;
+  translate: 0 105%;
+}
+
+.wk-in .tp-word > span {
+  translate: 0 0;
+  animation: hx-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--t, 0s) + var(--i) * 0.1s) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .wk-in .tp-word > span,
   .wk-in .wk-item,
   .wk-in .wk-strips {
     animation: none;
