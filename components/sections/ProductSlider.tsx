@@ -80,7 +80,7 @@ export default function ProductSlider() {
   };
 
   return (
-    <section className="bg-white py-12 text-black sm:py-16" aria-labelledby="product-slider-title">
+    <section className="py-12 text-black sm:py-16" aria-labelledby="product-slider-title">
       <div className="mx-auto max-w-360 px-4 sm:px-6 lg:px-8">
         <div className="mb-7 flex items-end justify-between gap-4">
           <h2 id="product-slider-title" className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">

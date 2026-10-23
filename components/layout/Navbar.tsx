@@ -55,7 +55,7 @@ export default function Navbar() {
           aria-label="Base & Balance home"
           className="absolute -top-3 left-1/2 z-10 flex h-14 w-[340px] -translate-x-1/2 items-end justify-center pb-1.5"
         >
-          <svg viewBox="0 0 340 56" preserveAspectRatio="none" aria-hidden="true" className="absolute inset-0 h-full w-full fill-[#e9ebed]">
+          <svg viewBox="0 0 340 56" preserveAspectRatio="none" aria-hidden="true" className="absolute inset-0 h-full w-full fill-white">
             <path d="M0 0H340C316 0 312 12 304 24L292 44Q286 56 272 56H68Q54 56 48 44L36 24C28 12 24 0 0 0Z" />
           </svg>
           <span className="relative flex items-end gap-2">

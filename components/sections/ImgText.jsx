@@ -18,7 +18,7 @@ const benefits = [
 
 export default function ImgText() {
 	return (
-		<section className="bg-white text-black" aria-labelledby="img-text-title">
+		<section className="text-black" aria-labelledby="img-text-title">
 			<div className="mx-auto max-w-360 px-4 sm:px-6 lg:px-8">
 				<div className="grid lg:grid-cols-2">
 				<div className="flex flex-col justify-center py-16 sm:py-20 lg:py-24">

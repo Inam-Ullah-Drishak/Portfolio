@@ -53,7 +53,7 @@ function TextTrack({
 
 export default function HomeTextMarquee() {
   return (
-    <section className="overflow-hidden bg-white" aria-label="Store message">
+    <section className="overflow-hidden" aria-label="Store message">
       <div className="flex flex-col gap-1 sm:gap-2">
         <TextTrack words={topLine} />
         <TextTrack words={bottomLine} reverse dark />

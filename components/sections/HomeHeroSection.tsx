@@ -1,16 +1,14 @@
 import Link from "next/link";
 import TypingWord from "./TypingWord";
-import { mockProducts } from "@/lib/mockData";
 
 // Cut-out model (transparent PNG) in /public
 const HERO_MODEL = "/hero-model.png";
 
-// Product photos from the mock data, cropped square for the avatar stack
-const avatars = [1, 2, 4].map((i) => `${mockProducts[i].image}?w=96&h=96&fit=crop`);
+const avatars = ["/avatar-1.jpg", "/avatar-2.jpg", "/avatar-3.jpg"];
 
 export default function HomeHeroSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-linear-to-b from-[#c3d1d5] via-[#d3dcdf] to-[#eef1f2] text-[#0b0808]">
+    <section className="relative isolate overflow-hidden bg-linear-to-b from-[#c3d1d5] via-[#d3dcdf] to-[#e9ebed] text-[#0b0808]">
       {/* Light rays fanning out behind the model */}
       <svg
         viewBox="0 0 100 100"

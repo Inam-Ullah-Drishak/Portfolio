@@ -38,7 +38,7 @@ export default function VideosFeeds() {
   };
 
   return (
-    <section className="bg-white py-12 text-black sm:py-16" aria-labelledby="videos-feeds-title">
+    <section className="py-12 text-black sm:py-16" aria-labelledby="videos-feeds-title">
       <div className="mx-auto max-w-360 px-4 sm:px-6 lg:px-8">
         <h2 id="videos-feeds-title" className="mb-8 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
           What people are saying

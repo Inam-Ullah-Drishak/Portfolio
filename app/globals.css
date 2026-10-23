@@ -138,7 +138,7 @@ body::after {
   inset: var(--frame-gap);
   z-index: 60;
   pointer-events: none;
-  border: 12px solid #e9ebed;
+  border: 12px solid #ffffff;
   border-radius: 30px;
   box-shadow: 0 0 0 100vmax #cdd8db;
 }
@@ -197,6 +197,34 @@ body::after {
   .hx-model,
   .hx-fade,
   .hx-word > span {
+    animation: none;
+  }
+}
+
+/* ---- Workout section: reveal once scrolled into view (.wk-in is added by WorkoutSection) ---- */
+.wk-item,
+.wk-strips {
+  opacity: 0;
+}
+
+.wk-in .wk-item {
+  opacity: 1;
+  animation: hx-fade 0.8s ease-out var(--d, 0s) both;
+}
+
+.wk-strips {
+  -webkit-mask: linear-gradient(to bottom, #000 calc(100% - var(--hx-gap)), transparent calc(100% - var(--hx-gap))) 0 0 / 100% 10%;
+  mask: linear-gradient(to bottom, #000 calc(100% - var(--hx-gap)), transparent calc(100% - var(--hx-gap))) 0 0 / 100% 10%;
+}
+
+.wk-in .wk-strips {
+  opacity: 1;
+  animation: hx-strips 1.2s ease-out 0.3s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk-in .wk-item,
+  .wk-in .wk-strips {
     animation: none;
   }
 }
