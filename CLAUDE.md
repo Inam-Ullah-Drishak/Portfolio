@@ -30,6 +30,8 @@ Keep this file updated: add to **Done**, move finished items out of **Next**, an
 - **Hero** (`components/sections/HomeHeroSection.tsx`): centred headline (words slide up), "SEASON" types/deletes in a loop (`TypingWord.tsx`, no caret, starts at 2.3s), Shop Now / Explore All pills, light rays, model cut-out (`public/hero-model.png`) that starts large and sliced into strips then drops into place, avatar stack (`public/avatar-1..3.jpg`) with blurb, looping video card (`public/hero-video.mp4`). Animation classes `hx-*` are in `globals.css`.
 - **Workout section** (`components/sections/WorkoutSection.tsx`, white, directly under the hero): giant "WORKOUT" behind three photo cards (`workout-center.png`, `workout-left.jpg`, `workout-right.jpg`), centre card reveals as strips when scrolled into view (`wk-*` classes).
 - **Top picks section** (`components/sections/TopPicksSection.tsx`, white, under the Workout section, full 1440px width): eyebrow + headline (words slide up) and three equal cards (464x580 on desktop) with a static black-to-white gradient. Each holds a transparent cut-out (`public/top-pick-1..3.png`) that reveals as strips when scrolled into view (only the cut-out animates). Tag top-left, heading bottom-left over a soft dark shade, outlined pill under it. Copy and images are in the `PICKS` array at the top. Approved by the user. Shares the `wk-*` reveal CSS and adds `tp-word`.
+- **Level Up section** (`components/sections/LevelUpSection.tsx`, white, under the Product gallery): two endless text lines "FRESH FITS FOR YOUR NEXT WORKOUT!" (top moves right, bottom moves left), grey outside the card and a white copy clipped to the card (CSS vars `--cw/--ch` size both). Four full-body cut-outs `public/person-1..4.png` swap every 4s with a zoom-out (`lv-*` classes in `globals.css`). Checked in the browser. Corner copy on the card is placeholder.
+- **Product gallery section** (`components/sections/ProductGallerySection.tsx`, white, under Top Picks): header ("New arrival" / title / "All brands") and a 4x2 grid of dummy product cards (tag pill, heart, name/price bar). Dummy items in `ITEMS`, uses 8 different local images (incl. `olive-jacket.png`, `level-up.png`); fades in with `wk-*`. Not yet checked in the browser.
 - Page sections below the Workout section sit on `#e9ebed` (`main` background in `app/page.tsx`); their white backgrounds were removed.
 - Repo connected: `origin` = `git@github.com:Inam-Ullah-Drishak/base-n-balance.git`, branch `main`. Only the first commit was pushed; later work is uncommitted.
 
@@ -37,7 +39,6 @@ Keep this file updated: add to **Done**, move finished items out of **Next**, an
 
 - Rewrite mock products as gym clothes, shoes and gear (names, descriptions, images are still developer-themed).
 - Make the remaining home sections (Featured Products and below) match the new style, or decide on a uniform page background.
-- Unused spare cut-out: `2.png` in the project root (olive jacket from behind).
 - Real avatar photos and final model/workout photos if the user supplies them.
 - Mobile menu only lists the left links (Apparel / Accessories missing). Phone widths have not been checked.
 - Right-side header links Apparel / Accessories and "About Us" all go to `/shop`.

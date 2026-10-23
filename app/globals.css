@@ -247,3 +247,28 @@ body::after {
     animation: none;
   }
 }
+
+/* ---- Level Up section: endless text lines (top moves right, bottom moves left), person zooms out on each swap ---- */
+@keyframes lv-marq-r {
+  from { translate: -50% 0; }
+  to { translate: 0 0; }
+}
+
+@keyframes lv-marq-l {
+  to { translate: -50% 0; }
+}
+
+@keyframes lv-zoom {
+  from { scale: 1.5; opacity: 0; }
+  to { scale: 1; opacity: 1; }
+}
+
+.lv-marq-r { animation: lv-marq-r 30s linear infinite; }
+.lv-marq-l { animation: lv-marq-l 30s linear infinite; }
+
+.lv-zoom { opacity: 0; transform-origin: bottom center; }
+.lv-in .lv-zoom { animation: lv-zoom 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lv-marq-r, .lv-marq-l, .lv-in .lv-zoom { animation: none; opacity: 1; }
+}

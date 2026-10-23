@@ -6,6 +6,8 @@ import ImgText from "@/components/sections/ImgText";
 import ProductSlider from "@/components/sections/ProductSlider";
 import WorkoutSection from "@/components/sections/WorkoutSection";
 import TopPicksSection from "@/components/sections/TopPicksSection";
+import LevelUpSection from "@/components/sections/LevelUpSection";
+import ProductGallerySection from "@/components/sections/ProductGallerySection";
 import VideosFeeds from "@/components/sections/VideosFeeds";
 
 export default function Home() {
@@ -14,6 +16,8 @@ export default function Home() {
       <HomeHeroSection />
       <WorkoutSection />
       <TopPicksSection />
+      <ProductGallerySection />
+      <LevelUpSection />
       <HomePressMarquee />
 
       {/* Featured Products Section */}
