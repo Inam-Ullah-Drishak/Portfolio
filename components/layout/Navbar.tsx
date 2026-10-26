@@ -2,19 +2,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useAuth, useAuthActions, useAppSelector } from "@/lib/hooks/useAuth";
+import { useAuth, useAuthActions, useAppDispatch, useAppSelector } from "@/lib/hooks/useAuth";
 import Image from "next/image";
+import { openDrawer } from "@/lib/features/uiSlice";
+import { siteConfig } from "@/lib/siteConfig";
 import { Menu, ShoppingBag, UserRound, X } from "lucide-react";
 
 const leftLinks = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
-  { href: "/shop", label: "About Us" },
-];
-
-const rightLinks = [
-  { href: "/shop", label: "Apparel" },
-  { href: "/shop", label: "Accessories" },
+  { href: "/about", label: "About Us" },
 ];
 
 const linkCls =
@@ -31,7 +28,8 @@ export default function Navbar() {
     s.cart.items.reduce((n, i) => n + i.quantity, 0)
   );
   const router = useRouter();
-  // On the home page the header floats over the hero, which supplies the gradient
+  const dispatch = useAppDispatch();
+  // Header is transparent, floats over the top of every page and scrolls with it; pages other than home pad their top for it
   const isHome = usePathname() === "/";
 
   const handleLogout = async () => {
@@ -42,30 +40,31 @@ export default function Navbar() {
 
   return (
     <header
-      className={`${isHome ? "absolute" : "sticky"} z-50`}
+      className="absolute z-50"
       style={{
         top: "calc(var(--frame-gap) + 12px)",
-        ...(isHome && { left: "calc(var(--frame-gap) + 12px)", right: "calc(var(--frame-gap) + 12px)" }),
+        left: "calc(var(--frame-gap) + 12px)",
+        right: "calc(var(--frame-gap) + 12px)",
       }}
     >
       <nav className="relative mx-auto max-w-360">
         {/* Notch: the frame colour dips into the panel behind the logo; top edge meets the page frame */}
         <Link
           href="/"
-          aria-label="Base & Balance home"
+          aria-label={`${siteConfig.name} home`}
           className="absolute -top-3 left-1/2 z-10 flex h-14 w-[120px] -translate-x-1/2 sm:w-[340px] items-end justify-center pb-1.5"
         >
-          <svg viewBox="0 0 340 56" preserveAspectRatio="none" aria-hidden="true" className="absolute inset-0 h-full w-full fill-white">
+          <svg viewBox="0 0 340 56" preserveAspectRatio="none" aria-hidden="true" className={`absolute inset-0 h-full w-full ${isHome ? "fill-white" : "fill-[#cdd8db]"}`}>
             <path d="M0 0H340C316 0 312 12 304 24L292 44Q286 56 272 56H68Q54 56 48 44L36 24C28 12 24 0 0 0Z" />
           </svg>
           <span className="relative flex items-end gap-2">
             <Image src="/logo.png" alt="" width={32} height={32} className="h-8 w-auto" priority />
-            <span className="hidden whitespace-nowrap text-base sm:inline font-semibold uppercase tracking-wide text-[#0b0808]">Base &amp; Balance</span>
+            <span className="hidden whitespace-nowrap text-base sm:inline font-semibold uppercase tracking-wide text-[#0b0808]">{siteConfig.name}</span>
           </span>
         </Link>
 
         {/* Sky-blue inner panel (transparent on home: the hero supplies it) */}
-        <div style={isHome ? ({ "--d": "0.5s" } as React.CSSProperties) : undefined} className={`relative flex h-11 items-center justify-between px-4 sm:px-6 lg:px-8 ${isHome ? "hx-fade" : "rounded-[18px] bg-linear-to-b from-[#c3d1d5] to-[#d3dcdf]"}`}>
+        <div style={isHome ? ({ "--d": "0.5s" } as React.CSSProperties) : undefined} className={`relative flex h-11 items-center justify-between px-4 sm:px-6 lg:px-8 ${isHome ? "hx-fade" : ""}`}>
           {/* Left */}
           <div className="flex items-center gap-7">
             <button
@@ -87,13 +86,6 @@ export default function Navbar() {
 
           {/* Right */}
           <div className="flex items-center gap-2">
-            <div className="mr-5 hidden items-center gap-7 xl:flex">
-              {rightLinks.map((l) => (
-                <Link key={l.label} href={l.href} className={linkCls}>
-                  {l.label}
-                </Link>
-              ))}
-            </div>
             <div className="relative">
               <button
                 type="button"
@@ -119,17 +111,9 @@ export default function Navbar() {
                   </p>
                   {isAuthenticated && user ? (
                     <>
-                      {["My Account", "Orders", "Wishlist", "Addresses"].map((item) => (
-                        <Link
-                          key={item}
-                          href="#"
-                          role="menuitem"
-                          onClick={() => setIsAccountMenuOpen(false)}
-                          className={menuItem}
-                        >
-                          {item}
-                        </Link>
-                      ))}
+                      <Link href="/wishlist" role="menuitem" onClick={() => setIsAccountMenuOpen(false)} className={menuItem}>
+                        Wishlist
+                      </Link>
                       <button
                         type="button"
                         role="menuitem"
@@ -147,6 +131,9 @@ export default function Navbar() {
                       <Link href="/register" role="menuitem" onClick={() => setIsAccountMenuOpen(false)} className={menuItem}>
                         Sign Up
                       </Link>
+                      <Link href="/wishlist" role="menuitem" onClick={() => setIsAccountMenuOpen(false)} className={menuItem}>
+                        Wishlist
+                      </Link>
                     </>
                   )}
                 </div>
@@ -155,6 +142,7 @@ export default function Navbar() {
             <button
               type="button"
               aria-label="Shopping cart"
+              onClick={() => dispatch(openDrawer())}
               className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#0b0808] text-white transition hover:bg-[#5d4d45]"
             >
               <ShoppingBag className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
@@ -170,7 +158,7 @@ export default function Navbar() {
         {/* Mobile menu */}
         {isMobileOpen && (
           <div className="mt-2 flex flex-col rounded-[22px] bg-[#d3dcdf] px-3 py-2 xl:hidden">
-            {[...leftLinks, ...rightLinks].map((l) => (
+            {leftLinks.map((l) => (
               <Link
                 key={l.label}
                 href={l.href}

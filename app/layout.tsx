@@ -5,13 +5,16 @@ import StoreProvider from "@/lib/StoreProvider";
 import AuthInitializer from "@/components/layout/AuthInitializer";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CartDrawer from "@/components/layout/CartDrawer";
+import Toast from "@/components/layout/Toast";
+import { siteConfig } from "@/lib/siteConfig";
 
 // Tight grotesk, close to the Vexo headline face
 const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tight" });
 
 export const metadata: Metadata = {
-  title: "Base & Balance",
-  description: "E-commerce store built with Next.js",
+  title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -29,6 +32,8 @@ export default function RootLayout({
               {children}
             </div>
             <Footer />
+            <CartDrawer />
+            <Toast />
           </AuthInitializer>
         </StoreProvider>
       </body>

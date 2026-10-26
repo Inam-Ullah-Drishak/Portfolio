@@ -22,6 +22,7 @@ export interface Product {
     };
     stock: number;
   }>; // Product variants
+  images?: string[]; // Extra gallery photos shown as thumbnails on the product page
 }
 
 // Mock stand-ins for the old RTK Query hooks: same return shape, no backend

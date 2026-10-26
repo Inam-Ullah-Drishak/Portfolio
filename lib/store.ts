@@ -1,6 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from './features/cartSlice';
 import authReducer from './features/authSlice';
+import wishlistReducer from './features/wishlistSlice';
+import uiReducer from './features/uiSlice';
+import orderReducer from './features/orderSlice';
 
 export const makeStore = () => {
   return configureStore({
@@ -9,6 +12,9 @@ export const makeStore = () => {
       cart: cartReducer,
       // 2. Auth state (User login/logout)
       auth: authReducer,
+      wishlist: wishlistReducer,
+      ui: uiReducer,
+      order: orderReducer,
     },
   });
 };
