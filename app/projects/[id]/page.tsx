@@ -146,12 +146,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         </div>
 
         {/* Client quote */}
-        <figure className="mt-12 rounded-3xl bg-[#e9ebed] p-8 sm:p-12">
-          <blockquote className="mx-auto max-w-3xl text-center text-[clamp(1.25rem,2.4vw,2rem)] font-medium leading-tight tracking-tight text-[#0b0808]">
-            &ldquo;{p.quote.text}&rdquo;
-          </blockquote>
-          <figcaption className="mt-4 text-center text-xs uppercase tracking-wide text-[#0b0808]/60">{p.quote.author}</figcaption>
-        </figure>
+        {p.quote && (
+          <figure className="mt-12 rounded-3xl bg-[#e9ebed] p-8 sm:p-12">
+            <blockquote className="mx-auto max-w-3xl text-center text-[clamp(1.25rem,2.4vw,2rem)] font-medium leading-tight tracking-tight text-[#0b0808]">
+              &ldquo;{p.quote.text}&rdquo;
+            </blockquote>
+            <figcaption className="mt-4 text-center text-xs uppercase tracking-wide text-[#0b0808]/60">{p.quote.author}</figcaption>
+          </figure>
+        )}
 
         {/* Previous / next */}
         <div className="mt-12 flex items-center justify-between gap-4 border-t border-[#0b0808]/15 pt-6 text-sm">

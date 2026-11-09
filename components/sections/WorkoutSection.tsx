@@ -81,14 +81,14 @@ export default function WorkoutSection() {
         {/* Left card */}
         <Link
           href={PRODUCTS.left.href}          aria-label={PRODUCTS.left.title}
-          className="wk-item absolute left-[3%] top-[70%] z-10 h-[24%] w-[34%] rounded-2xl bg-cover bg-top sm:left-[11%] sm:top-[14%] sm:z-auto sm:h-[34%] sm:w-[14.5%]"
+          className="wk-item absolute left-[3%] top-[70%] z-10 h-[24%] w-[34%] rounded-2xl bg-cover bg-top sm:left-[11%] sm:top-[14%] sm:z-auto sm:h-auto sm:aspect-3/5 sm:w-[14.5%]"
           style={{ ...delay(1.2), backgroundImage: `url(${PRODUCTS.left.image})` }}
         />
 
         {/* Centre card: sliced, then closes up */}
         <Link
           href={PRODUCTS.center.href}          aria-label={PRODUCTS.center.title}
-          className="wk-strips absolute left-1/2 top-[13%] h-[72%] w-[94%] -translate-x-1/2 sm:top-[12%] sm:h-[62%] overflow-hidden rounded-3xl bg-linear-to-b from-[#2f2b29] to-[#b4b4b4] sm:w-[25%]"
+          className="wk-strips absolute left-1/2 top-[13%] h-[72%] w-[94%] -translate-x-1/2 sm:top-[8%] sm:h-auto sm:aspect-3/5 overflow-hidden rounded-3xl bg-linear-to-b from-[#2f2b29] to-[#b4b4b4] sm:w-[25%]"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={PRODUCTS.center.image} alt="" className="h-full w-full object-cover object-top" />
@@ -97,7 +97,7 @@ export default function WorkoutSection() {
         {/* Right card */}
         <Link
           href={PRODUCTS.right.href}          aria-label={PRODUCTS.right.title}
-          className="wk-item absolute right-[3%] top-[70%] z-10 h-[24%] w-[34%] rounded-2xl bg-cover bg-top sm:right-auto sm:left-[74%] sm:top-[46%] sm:z-auto sm:h-[34%] sm:w-[14.5%]"
+          className="wk-item absolute right-[3%] top-[70%] z-10 h-[24%] w-[34%] rounded-2xl bg-cover bg-top sm:right-auto sm:left-[74%] sm:top-[46%] sm:z-auto sm:h-auto sm:aspect-3/5 sm:w-[14.5%]"
           style={{ ...delay(1.4), backgroundImage: `url(${PRODUCTS.right.image})` }}
         />
 

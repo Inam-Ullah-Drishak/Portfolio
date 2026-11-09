@@ -29,7 +29,7 @@ export type Project = {
   duration: string; // e.g. "3 weeks"
   services: string[]; // ids from lib/services.ts, shown as links to /services#<id>
   metrics: { label: string; value: string }[]; // key results, 3 short facts (use true figures only)
-  quote: { text: string; author: string }; // client quote
+  quote?: { text: string; author: string }; // client quote; leave out when there is no client (the section is hidden)
   status: "Live" | "Maintained" | "Archived";
   repoUrl?: string; // optional GitHub link; the button only shows when set
   shareImage?: string; // optional link-preview image (png/jpg), otherwise the site-wide one is used
@@ -49,17 +49,21 @@ export const cardImage = (p: Project) => (p.gallery.find((g) => g.device === "mo
 // DUMMY CONTENT: every client name and text below is a made-up sample. Replace with your real projects.
 export const projects: Project[] = [
   {
-    id: "business-website", title: "Business Website", description: "A fast, modern website for a professional services firm.",
-    gallery: gallery(1, ["Home page on mobile", "Home page on desktop", "Services page on mobile", "Services page on desktop"]), href: "https://example.com", featured: true,
-    platform: "Custom code", type: "Website", industry: "Professional services", client: "Sample Consulting Co.",
-    tools: ["Next.js", "React", "Tailwind CSS"], date: "2026-10-12", isNew: true,
-    problem: "The firm's old website was slow, hard to use on phones and brought in very few enquiries.",
-    solution: "I designed and built a new mobile-first site with clear service pages, fast loading and a simple contact flow.",
-    result: "The site loads quickly on every device, and visitors can now reach the firm in a couple of taps.",
-    role: "Design and development", duration: "4 weeks", status: "Live",
-    services: ["websites", "deployment"],
-    metrics: [{ label: "Load time", value: "Under 2s" }, { label: "Pages", value: "8" }, { label: "Mobile score", value: "95+" }],
-    quote: { text: "Dummy quote: working with Inam was smooth from start to finish, and the result looks and works great.", author: "Client Name, Sample Consulting Co." },
+    id: "velvet-and-oak", title: "Velvet & Oak", description: "A modern furniture website built with Next.js.",
+    gallery: [
+      { src: "/velvet-and-oak-1.png", alt: "Home page on desktop", device: "desktop" },
+      { src: "/velvet-and-oak-2.png", alt: "Home page on mobile", device: "mobile" },
+      { src: "/velvet-and-oak-3.png", alt: "Catalogue page on desktop", device: "desktop" },
+      { src: "/velvet-and-oak-4.png", alt: "Catalogue page on mobile", device: "mobile" },
+    ], href: "https://checkmate-1fh2.vercel.app/", featured: true,
+    platform: "Custom code", type: "Online store", industry: "Furniture", client: "Velvet & Oak (concept brand)",
+    tools: ["Next.js", "React", "Tailwind CSS", "TypeScript"], date: "2026-11-09", isNew: true,
+    problem: "Furniture is bought with the eyes, but most shop sites bury the pieces under clutter. I wanted to show what a calm, photo-led shop for an invented Scandinavian furniture maker could feel like, from first look to checkout.",
+    solution: "I built a complete multi-page shop experience: an animated home page, a filterable catalogue of 37 pieces, product pages, eight ready-made rooms with a design-your-own builder, a materials guide, a slide-in bag, saved pieces, search and a demo checkout. Smooth spring-based motion and large photography keep it calm and fast.",
+    result: "A full front-end shop that runs on mock data, with no database and no payment. Saved pieces and the bag survive a reload, and the site works on phones and desktops.",
+    role: "Design and development", duration: "2 weeks", status: "Live",
+    services: ["websites", "ecommerce"],
+    metrics: [{ label: "Products", value: "37" }, { label: "Ready-made rooms", value: "8" }, { label: "Materials", value: "7" }],
   },
   {
     id: "online-store", title: "Online Store", description: "A Shopify store for a small clothing brand.",
