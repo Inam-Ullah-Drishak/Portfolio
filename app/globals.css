@@ -308,3 +308,18 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .lt-in .lt-left, .lt-in .lt-right, .lt-in .lt-zoom { animation: none; opacity: 1; }
 }
+
+/* Project gallery: soft fade when the image changes (skipped for reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .gal-fade {
+    animation: gal-fade 0.3s ease-out;
+  }
+}
+@keyframes gal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import NewsletterForm from './NewsletterForm';
-import { siteConfig } from '@/lib/siteConfig';
+import { siteConfig, socialLinks } from '@/lib/siteConfig';
 
 const linkCls = "text-sm text-white/60 transition hover:text-white";
 const headCls = "mb-4 text-xs font-semibold uppercase tracking-wider text-[#967d6a]";
@@ -25,11 +24,10 @@ export default function Footer() {
             <h4 className={headCls}>Quick Links</h4>
             <ul className="space-y-2">
               <li><Link href="/" className={linkCls}>Home</Link></li>
-              <li><Link href="/shop" className={linkCls}>Shop</Link></li>
-              <li><Link href="/about" className={linkCls}>About Us</Link></li>
-              <li><Link href="/cart" className={linkCls}>Cart</Link></li>
-              <li><Link href="/wishlist" className={linkCls}>Wishlist</Link></li>
-              <li><Link href="/login" className={linkCls}>Sign In</Link></li>
+              <li><Link href="/projects" className={linkCls}>Work</Link></li>
+              <li><Link href="/services" className={linkCls}>Services</Link></li>
+              <li><Link href="/about" className={linkCls}>About</Link></li>
+              <li><Link href="/contact" className={linkCls}>Contact</Link></li>
             </ul>
           </div>
 
@@ -37,31 +35,33 @@ export default function Footer() {
           <div>
             <h4 className={headCls}>Contact</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li>{siteConfig.email}</li>
-              <li>{siteConfig.phone}</li>
+              <li><a href={`mailto:${siteConfig.email}`} className={linkCls}>{siteConfig.email}</a></li>
+              <li><a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className={linkCls}>{siteConfig.phone}</a></li>
+              {socialLinks.map((l) => (
+                <li key={l.label}>
+                  <a href={l.url} target="_blank" rel="noopener noreferrer" className={linkCls}>{l.label}</a>
+                </li>
+              ))}
               <li>{siteConfig.address}</li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className={headCls}>Newsletter</h4>
+            <h4 className={headCls}>Let&apos;s talk</h4>
             <p className="mb-4 text-sm text-white/60">
-              Subscribe for new arrivals and exclusive offers.
+              Have a project in mind? I reply within 24 hours.
             </p>
-            <NewsletterForm />
+            <Link
+              href="/contact"
+              className="inline-block rounded-full bg-white px-5 py-2 text-[13px] font-semibold uppercase tracking-wider text-[#0b0808] transition hover:bg-[#d1d6d8]"
+            >
+              Start a project
+            </Link>
           </div>
         </div>
 
-        {/* Outline wordmark */}
-        <p
-          aria-hidden="true"
-          className="vx-outline mt-8 select-none whitespace-nowrap pb-3 text-center text-[11cqw] font-bold uppercase leading-none tracking-tight"
-        >
-          {siteConfig.name}
-        </p>
-
-        <div className="border-t border-white/10 py-5 text-center">
+        <div className="mt-10 border-t border-white/10 py-5 text-center">
           <p className="text-xs text-white/50">
             © {currentYear}{" "}{siteConfig.name}. All rights reserved.
           </p>

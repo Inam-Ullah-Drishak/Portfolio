@@ -1,32 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { services } from "@/lib/services";
 
-// Replace image/href with real products when they are added. Images must be cut-outs (transparent PNG),
-// they stand on the card gradient. Paths are under /public.
-const PICKS = [
-  {
-    image: "/top-pick-1.png",
-    href: "/shop",
-    tag: "01 / Winter 2025",
-    text: "Layers built for the cold and every heavy set",
-    pill: "Top selling",
-  },
-  {
-    image: "/top-pick-2.png",
-    href: "/shop",
-    tag: "02 / Summer 2025",
-    text: "Light gear made to move all summer long",
-    pill: "New arrival",
-  },
-  {
-    image: "/top-pick-3.png",
-    href: "/shop",
-    tag: "03 / All year",
-    text: "Footwear for a steady step on every floor",
-    pill: "Best seller",
-  },
-];
+// The first 3 services from lib/services.ts; each card opens the contact page.
+const href = "/contact";
+const PICKS = services.slice(0, 3);
 
 const t = (s: number) => ({ "--t": `${s}s` }) as React.CSSProperties;
 
@@ -72,16 +51,16 @@ export default function TopPicksSection() {
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="wk-item text-[13px] font-medium uppercase tracking-wide text-[#0b0808]/60" style={{ "--d": "0s" } as React.CSSProperties}>
-              Our top picks
+              What I do
             </p>
             <h2 className="mt-4 text-[clamp(1.75rem,3.8vw,3.25rem)] font-medium uppercase leading-[0.95] tracking-tight text-[#0b0808]">
-              <Words text="Top gear for" start={0.1} />
+              <Words text="Services built for" start={0.1} />
               <br />
-              <Words text="peak performance!" start={0.4} />
+              <Words text="real results!" start={0.4} />
             </h2>
           </div>
           <p className="wk-item max-w-xs text-xs leading-5 text-[#0b0808]/60" style={{ "--d": "0.8s" } as React.CSSProperties}>
-            The pieces our customers reach for first, built to perform in every season.
+            From a first landing page to a full web app: clear, fast and made to grow with you.
           </p>
         </div>
 
@@ -89,8 +68,8 @@ export default function TopPicksSection() {
         <div className="mt-8 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:px-0 md:mt-12 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible [&::-webkit-scrollbar]:hidden">
           {PICKS.map((p, i) => (
             <Link
-              key={p.tag}
-              href={p.href}
+              key={p.id}
+              href={href}
               className="relative block aspect-[4/5] w-[76%] shrink-0 snap-center overflow-hidden md:w-auto md:shrink rounded-3xl bg-linear-to-b from-[#2a2624] via-[#7a7775] to-[#eceded]"
             >
               {/* Only the cut-out animates (strips close up); the gradient stays put */}
@@ -117,6 +96,14 @@ export default function TopPicksSection() {
               </span>
             </Link>
           ))}
+        </div>
+        <div className="wk-item mt-8 flex justify-center" style={{ "--d": "2.9s" } as React.CSSProperties}>
+          <Link
+            href="/services"
+            className="rounded-full bg-[#0b0808] px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-white transition hover:bg-[#5d4d45]"
+          >
+            View all
+          </Link>
         </div>
       </div>
     </section>

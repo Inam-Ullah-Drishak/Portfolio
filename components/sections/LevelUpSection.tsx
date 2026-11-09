@@ -1,10 +1,19 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 // Full-body cut-outs (transparent PNG) that swap in a loop. Paths are under /public.
 const PEOPLE = ["/person-1.png", "/person-2.png", "/person-3.png", "/person-4.png"];
 const SWAP_MS = 4000;
-const PHRASE = "Fresh fits for your next workout! ";
+const PHRASE = "Let's work together!";
+
+// The phrase plus a bullet with the same margin on both sides, so every repeat is separated evenly
+const Phrase = () => (
+  <span>
+    {PHRASE}
+    <span className="mx-[0.3em]">•</span>
+  </span>
+);
 
 // Two endless lines, top moves right and bottom moves left. Rendered twice (grey outside the card, white inside it);
 // both copies start together with the same duration so they stay in step.
@@ -13,12 +22,12 @@ function Marquees({ className }: { className: string }) {
   return (
     <div aria-hidden="true" className={`absolute inset-0 ${className}`}>
       <div className={`${line} lv-marq-r absolute left-0 top-[12%]`}>
-        <span>{PHRASE}</span>
-        <span>{PHRASE}</span>
+        <Phrase />
+        <Phrase />
       </div>
       <div className={`${line} lv-marq-l absolute bottom-[8%] left-0`}>
-        <span>{PHRASE}</span>
-        <span>{PHRASE}</span>
+        <Phrase />
+        <Phrase />
       </div>
     </div>
   );
@@ -75,11 +84,19 @@ export default function LevelUpSection() {
             }}
             className={`${hiding ? "lv-hide" : "lv-show"} absolute inset-x-0 bottom-[4%] mx-auto h-[86%] w-full object-contain object-bottom`}
           />
-          <p className="absolute left-[6%] top-[27%]">Base &amp; Balance<br />Level up</p>
-          <p className="absolute right-[6%] top-[27%] text-right">Free<br />Delivery</p>
-          <p className="absolute bottom-[22%] left-[6%]">Fall / Winter<br />2026</p>
-          <p className="absolute bottom-[22%] right-[6%] text-right">Gym<br />Essentials</p>
+          <p className="absolute left-[6%] top-[27%]">Inam Ullah<br />Web developer</p>
+          <p className="absolute right-[6%] top-[27%] text-right">Open for<br />freelance work</p>
+          <p className="absolute bottom-[22%] left-[6%]">Based in<br />Lahore, Pakistan</p>
+          <p className="absolute bottom-[22%] right-[6%] text-right">Reply within<br />24 hours</p>
         </div>
+      </div>
+      <div className="flex justify-center pb-6 pt-8 sm:pb-10 sm:pt-12">
+        <Link
+          href="/contact"
+          className="rounded-full bg-[#0b0808] px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-white transition hover:bg-[#5d4d45]"
+        >
+          Start a project
+        </Link>
       </div>
     </section>
   );
